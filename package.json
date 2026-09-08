@@ -45,6 +45,7 @@
     "vite-plus": "catalog:"
   },
   "overrides": {
+    "@scalar/openapi-upgrader": "0.2.12",
     "vite": "catalog:",
     "vitest": "catalog:"
   },
