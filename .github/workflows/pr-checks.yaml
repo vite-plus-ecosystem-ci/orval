@@ -3,15 +3,15 @@ name: PR checks
 on:
   pull_request:
     branches:
-      - 'master'
-      - 'next'
+    - 'master'
+    - 'next'
   # Also run after merge. Without this, drift that lands on master (e.g. a
   # generator change whose fixtures were only partly regenerated) goes
   # unnoticed until it fails an unrelated PR days later.
   push:
     branches:
-      - 'master'
-      - 'next'
+    - 'master'
+    - 'next'
 
 permissions:
   contents: read
@@ -25,47 +25,50 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest]
-        node-version: [22.x]
+        os:
+        - ubuntu-latest
+        - windows-latest
+        node-version:
+        - 22.x
     steps:
-      - uses: actions/checkout@v7
-      - name: Setup Vite+
-        uses: voidzero-dev/setup-vp@v1
-        with:
-          node-version: ${{ matrix.node-version }}
-          cache: true
-      - name: Setup Bun
-        uses: oven-sh/setup-bun@v2
+    - uses: actions/checkout@v7
+    - name: Setup Vite+
+      uses: voidzero-dev/setup-vp@v1.19.0
+      with:
+        node-version: ${{ matrix.node-version }}
+        cache: true
+    - name: Setup Bun
+      uses: oven-sh/setup-bun@v2
 
-      - name: Install dependencies
-        run: vp install --frozen-lockfile
+    - name: Install dependencies
+      run: vp install --frozen-lockfile
 
-      - name: Check formatting
-        run: vp fmt --check
+    - name: Check formatting
+      run: vp fmt --check
 
-      - name: Build packages
-        run: vp run -w build:release
+    - name: Build packages
+      run: vp run -w build:release
 
-      - name: Lint packages
-        run: vp run -w lint
+    - name: Lint packages
+      run: vp run -w lint
 
-      - name: Lint samples
-        run: vp run -w lint:samples
+    - name: Lint samples
+      run: vp run -w lint:samples
 
-      - name: Lint snapshots
-        run: vp run -w lint:snapshots
+    - name: Lint snapshots
+      run: vp run -w lint:snapshots
 
-      - name: Typecheck packages
-        run: vp run -w typecheck
+    - name: Typecheck packages
+      run: vp run -w typecheck
 
-      - name: Test packages
-        run: vp run -w test
+    - name: Test packages
+      run: vp run -w test
 
-      - name: Verify snapshot
+    - name: Verify snapshot
         # this step also runs the generate-api task
-        run: vp run -w test:snapshots
+      run: vp run -w test:snapshots
 
-      - name: Test samples
+    - name: Test samples
         # Runtime tests for the generated clients (Angular TestBed suites,
         # vue-query component tests, and the tsc/svelte-check type gates).
         # The snapshot step above only proves generated code matches the
@@ -75,10 +78,10 @@ jobs:
         # sample's client, and several samples gitignore their generated
         # output, so these tests cannot compile on a fresh checkout until
         # it has run.
-        run: vp run -w test:samples
+      run: vp run -w test:samples
 
-      - name: Verify generated code can build
-        run: vp run -F orval-tests build
+    - name: Verify generated code can build
+      run: vp run -F orval-tests build
 
   publish-preview:
     needs: pr-checks
@@ -92,26 +95,28 @@ jobs:
       pull-requests: write
 
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v7
-        with:
-          ref: ${{ github.event.pull_request.head.sha }}
-          persist-credentials: false
+    - name: Checkout repository
+      uses: actions/checkout@v7
+      with:
+        ref: ${{ github.event.pull_request.head.sha }}
+        persist-credentials: false
 
-      - name: Setup Vite+
-        uses: voidzero-dev/setup-vp@v1
-        with:
-          node-version: 24
-          cache: true
+    - name: Setup Vite+
+      uses: voidzero-dev/setup-vp@v1.19.0
+      with:
+        node-version: 24
+        cache: true
 
-      - name: Setup Bun
-        uses: oven-sh/setup-bun@v2
+    - name: Setup Bun
+      uses: oven-sh/setup-bun@v2
 
-      - name: Install dependencies
-        run: vp install --frozen-lockfile
+    - name: Install dependencies
+      run: vp install --frozen-lockfile
 
-      - name: Build packages
-        run: vp run -w build:release
+    - name: Build packages
+      run: vp run -w build:release
 
-      - name: Publish preview packages
-        run: bun run pkg-pr-new publish './packages/*' --bun --commentWithSha --packageManager=bun
+    - name: Publish preview packages
+      run: bun run pkg-pr-new publish './packages/*' --bun --commentWithSha --packageManager=bun
+# Ecosystem smoke test: publishing needs credentials unavailable on the fork.
+      if: ${{ github.repository_owner != 'vite-plus-ecosystem-ci' }}

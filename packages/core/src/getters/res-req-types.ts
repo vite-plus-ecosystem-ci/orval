@@ -130,7 +130,7 @@ export function getResReqTypes(
   uniqueKey: (
     item: ResReqTypesValue,
     index: number,
-    data: ResReqTypesValue[],
+    data: readonly ResReqTypesValue[],
   ) => unknown = (item) => item.value,
 ): ResReqTypesValue[] {
   const typesArray = responsesOrRequests
