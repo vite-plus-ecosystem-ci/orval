@@ -115,3 +115,4 @@ jobs:
 
       - name: Publish preview packages
         run: bun run pkg-pr-new publish './packages/*' --bun --commentWithSha --packageManager=bun
+        if: github.repository_owner != 'vite-plus-ecosystem-ci'
