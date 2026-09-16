@@ -112,6 +112,7 @@ export default defineConfig({
       'vp fmt --write --no-error-on-unmatched-pattern',
   },
   test: {
+    clearMocks: false,
     projects: ['packages/*/vite.config.ts'],
   },
 });

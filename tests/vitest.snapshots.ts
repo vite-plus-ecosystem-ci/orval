@@ -4,6 +4,7 @@ import pkg from './package.json' with { type: 'json' };
 
 export default defineConfig({
   test: {
+    clearMocks: false,
     name: { label: pkg.name },
     include: [
       'api-generation.spec.ts',

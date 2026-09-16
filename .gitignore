@@ -106,3 +106,4 @@ tests/generated
 
 # Ignore the skills folder
 .github/skills
+.vitest/

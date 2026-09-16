@@ -8,6 +8,7 @@ export default defineConfig({
     include: ['axios'],
   },
   test: {
+    clearMocks: false,
     environment: 'jsdom',
     setupFiles: ['src/setupTests.ts'],
   },
