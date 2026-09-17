@@ -39,3 +39,4 @@ docs-markdown/**/*.js
 !docs-html-plugin/assets/icons.js
 !docs-html-plugin/assets/search.js
 !docs-html-plugin/assets/navigation.js
+.vitest/

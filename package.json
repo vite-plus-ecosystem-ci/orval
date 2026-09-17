@@ -41,7 +41,12 @@
     "pkg-pr-new": "^0.0.86",
     "rimraf": "catalog:",
     "typescript": "catalog:",
+    "vite": "catalog:",
     "vite-plus": "catalog:"
+  },
+  "overrides": {
+    "vite": "catalog:",
+    "vitest": "catalog:"
   },
   "devEngines": {
     "runtime": {
@@ -63,8 +68,9 @@
     "tslib": "2.8.1",
     "typescript-eslint": "8.57.2",
     "typescript": "6.0.3",
-    "vite-plus": "0.3.1",
-    "vite": "npm:@voidzero-dev/vite-plus-core@0.3.1"
+    "vite-plus": "0.0.0-commit.7aaf0908b976917d9dd32a3a6c8e740ad2cb151d",
+    "vite": "npm:@voidzero-dev/vite-plus-core@0.0.0-commit.7aaf0908b976917d9dd32a3a6c8e740ad2cb151d",
+    "vitest": "5.0.1"
   },
   "catalogs": {
     "angular": {
