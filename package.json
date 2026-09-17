@@ -45,6 +45,10 @@
     "vite-plus": "catalog:"
   },
   "overrides": {
+    "@scalar/openapi-parser": "0.29.1",
+    "@scalar/openapi-types": "0.9.5",
+    "@scalar/openapi-upgrader": "0.2.15",
+    "remeda": "2.33.6",
     "vite": "catalog:",
     "vitest": "catalog:"
   },
