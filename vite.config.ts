@@ -112,6 +112,10 @@ export default defineConfig({
       'vp fmt --write --no-error-on-unmatched-pattern',
   },
   test: {
+    // Vitest v4 compatibility: preserve mock call history.
+    // Remove after tests no longer rely on calls from setup or earlier tests.
+    // https://vitest.dev/guide/migration/#clearmocks-is-enabled-by-default
+    clearMocks: false,
     projects: ['packages/*/vite.config.ts'],
   },
 });
