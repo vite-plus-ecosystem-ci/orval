@@ -71,11 +71,12 @@ Content-type aware responses — MSW handlers automatically use the correct help
 ## Test Setup with Vitest
 
 ```ts
+import { setupServer } from 'msw/node';
+
 import {
   getListPetsMockHandler,
   getShowPetByIdMockHandler,
 } from './api/petstore.msw';
-import { setupServer } from 'msw/node';
 
 const server = setupServer(...getListPetsMockHandler());
 
