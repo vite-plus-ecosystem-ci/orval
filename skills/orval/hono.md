@@ -103,8 +103,9 @@ src/
 
 ```ts
 import { Hono } from 'hono';
-import { listPetsHandlers } from './handlers/listPets';
+
 import { createPetsHandlers } from './handlers/createPets';
+import { listPetsHandlers } from './handlers/listPets';
 import { showPetByIdHandlers } from './handlers/showPetById';
 
 const app = new Hono();
@@ -124,8 +125,9 @@ OpenAPI path params `{petId}` are converted to Hono format `:petId`.
 
 ```ts
 import { createFactory } from 'hono/factory';
-import { zValidator } from '../petstore.validator';
+
 import { ListPetsContext } from '../petstore.context';
+import { zValidator } from '../petstore.validator';
 import { listPetsQueryParams, listPetsResponse } from '../petstore.zod';
 
 const factory = createFactory();
@@ -143,8 +145,9 @@ export const listPetsHandlers = factory.createHandlers(
 
 ```ts
 import { createFactory } from 'hono/factory';
-import { zValidator } from '../petstore.validator';
+
 import { ShowPetByIdContext } from '../petstore.context';
+import { zValidator } from '../petstore.validator';
 import { showPetByIdParams, showPetByIdResponse } from '../petstore.zod';
 
 const factory = createFactory();
@@ -163,8 +166,9 @@ export const showPetByIdHandlers = factory.createHandlers(
 
 ```ts
 import { createFactory } from 'hono/factory';
-import { zValidator } from '../petstore.validator';
+
 import { CreatePetsContext } from '../petstore.context';
+import { zValidator } from '../petstore.validator';
 import { createPetsBody, createPetsResponse } from '../petstore.zod';
 
 const factory = createFactory();
@@ -262,6 +266,7 @@ Generated `routes.ts`:
 
 ```ts
 import { Hono } from 'hono';
+
 import {
   listPetsHandlers,
   createPetsHandlers,
@@ -281,6 +286,7 @@ Wire it up in your app entry point:
 
 ```ts
 import { Hono } from 'hono';
+
 import routes from './routes';
 
 const app = new Hono();
