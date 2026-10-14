@@ -44,6 +44,10 @@
     "vite": "catalog:",
     "vite-plus": "catalog:"
   },
+  "overrides": {
+    "vite": "catalog:",
+    "vitest": "catalog:"
+  },
   "devEngines": {
     "runtime": {
       "name": "node",
@@ -133,9 +137,5 @@
       "@modelcontextprotocol/hono": "2.0.2"
     }
   },
-  "namespace": "@orval",
-  "overrides": {
-    "vite": "catalog:",
-    "vitest": "catalog:"
-  }
+  "namespace": "@orval"
 }
