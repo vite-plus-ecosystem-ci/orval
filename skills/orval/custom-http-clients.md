@@ -74,6 +74,7 @@ export type BodyType<BodyData> = BodyData;
 ```tsx
 // auth.context.tsx
 import { useEffect, useState, createContext, useContext } from 'react';
+
 import { AXIOS_INSTANCE } from './api/mutator/custom-instance';
 
 const AuthProvider = ({ children, initialState = null }) => {
