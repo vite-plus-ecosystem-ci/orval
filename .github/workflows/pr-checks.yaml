@@ -113,5 +113,8 @@ jobs:
       - name: Build packages
         run: vp run -w build:release
 
+      # Ecosystem-ci smoke test: publishing a preview package needs a GitHub App or
+      # token the fork does not have, and it does not exercise the pinned Vite+.
       - name: Publish preview packages
+        if: ${{ github.repository_owner != 'vite-plus-ecosystem-ci' }}
         run: bun run pkg-pr-new publish './packages/*' --bun --commentWithSha --packageManager=bun
