@@ -41,6 +41,7 @@
     "pkg-pr-new": "^0.0.86",
     "rimraf": "catalog:",
     "typescript": "catalog:",
+    "vite": "catalog:",
     "vite-plus": "catalog:"
   },
   "devEngines": {
@@ -63,8 +64,9 @@
     "tslib": "2.8.1",
     "typescript-eslint": "8.57.2",
     "typescript": "6.0.3",
-    "vite-plus": "1.0.0",
-    "vite": "npm:@voidzero-dev/vite-plus-core@1.0.0"
+    "vite-plus": "0.0.0-commit.3b99001a24f162be6a4478c3b97f3d0eb81c96c8",
+    "vite": "npm:@voidzero-dev/vite-plus-core@0.0.0-commit.3b99001a24f162be6a4478c3b97f3d0eb81c96c8",
+    "vitest": "5.0.4"
   },
   "catalogs": {
     "angular": {
@@ -131,5 +133,9 @@
       "@modelcontextprotocol/hono": "2.0.2"
     }
   },
-  "namespace": "@orval"
+  "namespace": "@orval",
+  "overrides": {
+    "vite": "catalog:",
+    "vitest": "catalog:"
+  }
 }
