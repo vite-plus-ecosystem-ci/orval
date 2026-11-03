@@ -29,6 +29,7 @@
     "rimraf": "catalog:",
     "typescript": "catalog:",
     "valibot": "catalog:valibot",
+    "vite": "catalog:",
     "vite-plus": "catalog:"
   },
   "peerDependencies": {

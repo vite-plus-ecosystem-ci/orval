@@ -65,6 +65,7 @@
     "swr": "catalog:swr",
     "typescript": "catalog:",
     "valibot": "catalog:valibot",
+    "vite": "catalog:",
     "vite-plus": "catalog:",
     "vue": "catalog:vue",
     "zod": "catalog:zod4"
